@@ -246,7 +246,7 @@ class FaceSwapApp:
             img_no_bg = remove(self.source_image)
 
             # Sauvegarde l'image temporairement dans le bon format
-            face_dir = os.path.join(os.getcwd(), "deepfacelive", "assets", "faces")
+            face_dir = os.path.join(os.getcwd(), "deepfacelivetemp", "assets", "faces")
             os.makedirs(face_dir, exist_ok=True)
             face_path = os.path.join(face_dir, "input_face.png")
             cv2.imwrite(face_path, img_no_bg)
@@ -255,14 +255,17 @@ class FaceSwapApp:
             deepfacelive_path = "C:/Users/pa76wlu/Desktop/PythonProject1/DeepFaceLive-master/"  # adapte ce chemin
             #subprocess.Popen(["python", "main.py"], cwd=deepfacelive_path)
             script_path = os.path.join(deepfacelive_path, "main.py")
-
             subprocess.Popen([
+                "python", "main.py", "run", "DeepFaceLive",
+                "--userdata-dir", "workspace"
+            ], cwd=deepfacelive_path)
+
+            """subprocess.Popen([
                 "python", script_path,
                 #"python", "main.py"
                 "--face", face_path,
                 "--source", "webcam"
-            ], cwd=deepfacelive_path)
-
+            ], cwd=deepfacelive_path)"""
             self.status_var.set("DeepFaceLive en cours d'exécution.")
         except Exception as e:
             messagebox.showerror("Erreur DeepFaceLive", str(e))
