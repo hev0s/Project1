@@ -245,27 +245,21 @@ class FaceSwapApp:
             # Retire le fond
             img_no_bg = remove(self.source_image)
 
-            # Sauvegarde l'image temporairement dans le bon format
+            # Sauvegarde l'image temporairement
             face_dir = os.path.join(os.getcwd(), "deepfacelivetemp", "assets", "faces")
             os.makedirs(face_dir, exist_ok=True)
             face_path = os.path.join(face_dir, "input_face.png")
             cv2.imwrite(face_path, img_no_bg)
 
-            # Lance DeepFaceLive en mode live webcam
-            deepfacelive_path = "C:/Users/pa76wlu/Desktop/PythonProject1/DeepFaceLive-master/"  # adapte ce chemin
-            #subprocess.Popen(["python", "main.py"], cwd=deepfacelive_path)
-            script_path = os.path.join(deepfacelive_path, "main.py")
-            subprocess.Popen([
-                "python", "main.py", "run", "DeepFaceLive",
-                "--userdata-dir", "workspace"
-            ], cwd=deepfacelive_path)
+            # Lance DeepFaceLive
+            deepfacelive_path = "C:/Users/pa76wlu/Desktop/PythonProject1/DeepFaceLive-master"  # adapte si besoin
 
-            """subprocess.Popen([
-                "python", script_path,
-                #"python", "main.py"
-                "--face", face_path,
-                "--source", "webcam"
-            ], cwd=deepfacelive_path)"""
+            # Exécution du module DeepFaceLive comme dans le terminal
+            subprocess.Popen(
+                ["python", "-m", "DeepFaceLive.apps.DeepFaceLive.DeepFaceLiveApp"],
+                cwd=deepfacelive_path
+            )
+
             self.status_var.set("DeepFaceLive en cours d'exécution.")
         except Exception as e:
             messagebox.showerror("Erreur DeepFaceLive", str(e))

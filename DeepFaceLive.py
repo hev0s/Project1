@@ -2,7 +2,7 @@ import cv2
 import socket
 import numpy as np
 import struct
-
+"""
 # Configuration
 HOST = '127.0.0.1'      # Adresse IP du serveur (DeepFaceLive en écoute)
 PORT = 9999             # Port utilisé par DeepFaceLive ou ton proxy serveur
@@ -44,8 +44,9 @@ finally:
 
 
 """
+"""
 OBS 
-
+"""
 import cv2
 
 cap = cv2.VideoCapture(0)
@@ -64,4 +65,3 @@ cap.release()
 cv2.destroyAllWindows()
 
 
-"""
