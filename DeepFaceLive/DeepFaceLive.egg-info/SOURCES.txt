@@ -1,0 +1,9 @@
+LICENSE
+README.md
+setup.py
+DeepFaceLive.egg-info/PKG-INFO
+DeepFaceLive.egg-info/SOURCES.txt
+DeepFaceLive.egg-info/dependency_links.txt
+DeepFaceLive.egg-info/top_level.txt
+localization/__init__.py
+localization/localization.py
